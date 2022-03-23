@@ -79,7 +79,7 @@ class OutsideOrderController extends Controller
             }
             $business_id = request()->session()->get('user.business_id');
             $outside_orders = DB::table('tbl_outside_orders')
-                ->join('tbl_outside_customers','tbl_outside_customers.id','=','tbl_outside_orders.customer_id')
+                ->join('contacts','contacts.id','=','tbl_outside_orders.customer_id')
                 ->leftJoin('tbl_drivers','tbl_drivers.id','=','tbl_outside_orders.driver_id')
                 ->join('transactions','transactions.id','=','tbl_outside_orders.transaction_id')
                 ->where('tbl_outside_orders.business_id',$business_id)
@@ -91,7 +91,7 @@ class OutsideOrderController extends Controller
                     'tbl_outside_orders.order_status',
                     'tbl_outside_orders.payment_type',
                     'tbl_outside_orders.order_date',
-                    'tbl_outside_customers.customer_name',
+                    'contacts.name',
                     'transactions.invoice_no',
                     'transactions.id as tid',
                     'transactions.final_total',

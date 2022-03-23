@@ -431,7 +431,7 @@ $(document).ready(function () {
     var outside_orders_table_colums = [
 
         { data: 'invoice_no', name: 'invoice_no' },
-        { data: 'customer_name', name: 'customer_name' },
+        { data: 'name', name: 'name' },
         { data: 'driver_name', name: 'driver_name' },
         { data: 'order_status', name: 'order_status' },
         { data: 'payment_type', name: 'payment_type' },

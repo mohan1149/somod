@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         {!! Form::label('service_custom_field_2', __( 'lang_v1.service_custom_field_2', ['number' => 2] ) . ':') !!}
-                        {!! Form::text('service_custom_field_2', !empty($transaction) ? $transaction->service_custom_field_2 : null, ['class' => 'form-control', 'placeholder' => __( 'lang_v1.service_custom_field_2') ]); !!}
+                        {!! Form::select('service_custom_field_2', $drivers,null, ['class'=>'form-control']) !!}
                     </div>
                     <div class="form-group col-md-6">
                         {!! Form::label('service_custom_field_3', __( 'lang_v1.service_custom_field_3') . ':') !!}

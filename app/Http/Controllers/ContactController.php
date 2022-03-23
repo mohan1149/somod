@@ -257,7 +257,21 @@ class ContactController extends Controller
                 )
                 ->editColumn(
                     'custom_field1',
-                    '<h5 class="customer_sub_status_<?php echo $custom_field1 == "on" ? "on" : "off" ?>"><?php echo $custom_field1 == "on" ? "Paid" : "Not Paid" ?></h5>'
+                    function($row){
+                        $now = time();
+                        $your_date = strtotime($row->created_at);
+                        $datediff = $now - $your_date;
+                        $days =  round($datediff / (60 * 60 * 24));
+                        if($days <= 90 && $row->custom_field1=="on"){
+                            return "<h5 class='customer_sub_status_on'>Paid - Valid </h2>";
+                        }
+                        else if($days > 90 && $row->custom_field1 =="on"){
+                            return  "<h5 class='customer_sub_status_off'>Paid - Expired </h2>";
+                        }
+                        else if($row->custom_field1 == NULL){
+                            return  "<h5 class='customer_sub_status_off'>Not Paid </h2>";
+                        }
+                    }
                 )
                 ->addColumn(
                     'custom_field3',

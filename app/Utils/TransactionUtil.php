@@ -94,7 +94,16 @@ class TransactionUtil extends Util
             'service_custom_field_3' => !empty($input['service_custom_field_3']) ? $input['service_custom_field_3'] : null,
             'service_custom_field_4' => !empty($input['service_custom_field_4']) ? $input['service_custom_field_4'] : null
         ]);
-
+        if( isset($input['service_custom_field_2']) && $input['service_custom_field_2'] !=""){
+            DB::table('tbl_outside_orders')
+                ->insert([
+                'driver_id' => $input['service_custom_field_2'],
+                'customer_id' => $input['contact_id'],
+                'order_status' => 0,
+                'transaction_id' => $transaction->id,
+                'business_id' => $business_id,
+            ]);
+        }
         return $transaction;
     }
 
@@ -837,6 +846,8 @@ class TransactionUtil extends Util
         //Customer show_customer
         $customer = Contact::find($transaction->contact_id);
         $output['current_balance'] = $customer->custom_field3;
+        $driver = DB::table('tbl_drivers')->where('id',$transaction->service_custom_field_2)->first();
+        $output['driver'] = $driver->driver_name;
         $output['customer_info'] = '';
         $output['customer_tax_number'] = '';
         $output['customer_tax_label'] = '';

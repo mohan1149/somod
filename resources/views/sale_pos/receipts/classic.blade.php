@@ -31,9 +31,7 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-							@if ( isset($receipt_details->types_of_service_custom_fields ))
-								{{ $receipt_details->types_of_service_custom_fields['Delivery Staff Name'] }}
-							@endif
+							{{ $receipt_details->driver }}
 						</td>
 						
 					</tr>
@@ -175,9 +173,7 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-							@if ( isset($receipt_details->types_of_service_custom_fields ))
-								{{ $receipt_details->types_of_service_custom_fields[__("lang_v1.service_custom_field_2")] }}
-							@endif
+							{{ $receipt_details->driver }}
 						</td>
 						
 					</tr>
