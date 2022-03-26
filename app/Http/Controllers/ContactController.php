@@ -236,6 +236,7 @@ class ContactController extends Controller
                                 'custom_field3',
                                 'custom_field4',
                                 'renewal_count',
+                                'member_from',
                                 'total_paid_value',
                                 DB::raw("SUM(IF(t.type = 'sell' AND t.status = 'final', final_total, 0)) as total_invoice"),
                                 DB::raw("SUM(IF(t.type = 'sell' AND t.status = 'final', (SELECT SUM(IF(is_return = 1,-1*amount,amount)) FROM transaction_payments WHERE transaction_payments.transaction_id=t.id), 0)) as invoice_received"),
@@ -259,7 +260,7 @@ class ContactController extends Controller
                     'custom_field1',
                     function($row){
                         $now = time();
-                        $your_date = strtotime($row->created_at);
+                        $your_date = strtotime($row->member_from);
                         $datediff = $now - $your_date;
                         $days =  round($datediff / (60 * 60 * 24));
                         if($days <= 90 && $row->custom_field1=="on"){
@@ -414,6 +415,7 @@ class ContactController extends Controller
                     $input['contact_id'] = $this->commonUtil->generateReferenceNumber('contacts', $ref_count);
                 }
                 $input['custom_field4'] = $request['customer_area'];
+                $input['member_from'] = date('Y-m-d');
                 $contact = Contact::create($input);
 
                 if($request['type'] == 'customer'){
@@ -1208,6 +1210,7 @@ class ContactController extends Controller
             $csgi = CustomerGroup::where('id',$customer->customer_group_id)->first();
             $cusupdate = Contact::where('id',$cid)
             ->update([
+                'member_from'=> date('Y-m-d'),
                 'custom_field1' => $check,
                 'custom_field2' => 0,
                 'custom_field3' => $csgi->subscription_pieces,
