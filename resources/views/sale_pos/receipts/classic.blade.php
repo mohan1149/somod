@@ -31,7 +31,9 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-							{{ $receipt_details->driver }}
+							@if (isset($receipt_details->driver))
+								{{ $receipt_details->driver }}
+							@endif
 						</td>
 						
 					</tr>
@@ -173,7 +175,10 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-							{{ $receipt_details->driver }}
+
+							@if (isset($receipt_details->driver))
+								{{ $receipt_details->driver }}
+							@endif
 						</td>
 						
 					</tr>

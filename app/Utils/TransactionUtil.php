@@ -846,8 +846,10 @@ class TransactionUtil extends Util
         //Customer show_customer
         $customer = Contact::find($transaction->contact_id);
         $output['current_balance'] = $customer->custom_field3;
-        $driver = DB::table('tbl_drivers')->where('id',$transaction->service_custom_field_2)->first();
-        $output['driver'] = $driver->driver_name;
+        if(isset($transaction->service_custom_field_2)){
+            $driver = DB::table('tbl_drivers')->where('id',$transaction->service_custom_field_2)->first();
+            $output['driver'] = $driver->driver_name;
+        }
         $output['customer_info'] = '';
         $output['customer_tax_number'] = '';
         $output['customer_tax_label'] = '';
