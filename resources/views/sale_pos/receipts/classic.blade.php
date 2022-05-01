@@ -11,7 +11,7 @@
 				<h6>Delivery :: (+965) 66444477</h6>
 			</div>
 		</div>
-		<h5 style="text-align: center"><strong>{{ $receipt_details->invoice_no }}</strong></h5>
+		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
 		<div class="row">
 			<div class="col-xs-6">
 				<table class="full-table">
@@ -31,8 +31,8 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-							@if (isset($receipt_details->driver))
-								{{ $receipt_details->driver }}
+							@if ( isset($receipt_details->types_of_service_custom_fields ))
+								{{ $receipt_details->types_of_service_custom_fields['Delivery Staff Name'] }}
 							@endif
 						</td>
 						
@@ -65,7 +65,7 @@
 						<td>Current Bal</td>
 						<td>
 							@if (isset($receipt_details->current_balance))
-								<span>{{ $receipt_details->current_balance }}</span>
+								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>
 					</tr>
@@ -76,32 +76,40 @@
 			<thead>
 				<tr>
 					<th>{{$receipt_details->table_product_label}}</th>
+					<th>Service Type</th>
 					<th>{{$receipt_details->table_qty_label}}</th>
 					<th>{{$receipt_details->table_unit_price_label}}</th>
 					<th>{{$receipt_details->table_subtotal_label}}</th>
 				</tr>
 			</thead>
 			<tbody>
+				@php
+					$qn=0;
+				@endphp
 				@forelse($receipt_details->lines as $line)
+				@php
+					$qn += $line['quantity'];
+				@endphp
 					<tr>
 						<td style="word-break: break-all;">
-							@if(!empty($line['image']))
+							{{-- @if(!empty($line['image']))
 								<img src="{{$line['image']}}" alt="Image" width="50" style="float: left; margin-right: 8px;">
-							@endif
-                            {{$line['name']}} {{$line['product_variation']}} {{$line['variation']}} 
-                            @if(!empty($line['sub_sku'])), {{$line['sub_sku']}} @endif 
-							@if(!empty($line['brand'])), {{$line['brand']}} @endif
+							@endif --}}
+                            {{$line['name']}}
+                            {{-- @if(!empty($line['sub_sku'])), {{$line['sub_sku']}} @endif  --}}
+							{{-- @if(!empty($line['brand'])), {{$line['brand']}} @endif --}}
 							{{$line['line_note']}}
 							{{-- @if(!empty($line['cat_code'])), {{$line['cat_code']}}@endif --}}
 							
-                            @if(!empty($line['product_custom_fields'])), {{$line['product_custom_fields']}} @endif
-                            @if(!empty($line['sell_line_note']))({{$line['sell_line_note']}}) @endif 
-                            @if(!empty($line['lot_number']))<br> {{$line['lot_number_label']}}:  {{$line['lot_number']}} @endif 
-                            @if(!empty($line['product_expiry'])), {{$line['product_expiry_label']}}:  {{$line['product_expiry']}} @endif
-                            @if(!empty($line['warranty_name'])) <br><small>{{$line['warranty_name']}} </small>@endif @if(!empty($line['warranty_exp_date'])) <small>- {{@format_date($line['warranty_exp_date'])}} </small>@endif
-                            @if(!empty($line['warranty_description'])) <small> {{$line['warranty_description'] ?? ''}}</small>@endif
+                            {{-- @if(!empty($line['product_custom_fields'])), {{$line['product_custom_fields']}} @endif --}}
+                            {{-- @if(!empty($line['sell_line_note']))({{$line['sell_line_note']}}) @endif  --}}
+                            {{-- @if(!empty($line['lot_number']))<br> {{$line['lot_number_label']}}:  {{$line['lot_number']}} @endif  --}}
+                            {{-- @if(!empty($line['product_expiry'])), {{$line['product_expiry_label']}}:  {{$line['product_expiry']}} @endif --}}
+                            {{-- @if(!empty($line['warranty_name'])) <br><small>{{$line['warranty_name']}} </small>@endif @if(!empty($line['warranty_exp_date'])) <small>- {{@format_date($line['warranty_exp_date'])}} </small>@endif --}}
+                            {{-- @if(!empty($line['warranty_description'])) <small> {{$line['warranty_description'] ?? ''}}</small>@endif --}}
                         </td>
-						<td>{{$line['quantity']}} {{$line['units']}} </td>
+						<td>{{ $line['variation'] }}</td>
+						<td>{{$line['quantity']}} </td>
 						<td>{{$line['unit_price_inc_tax']}}</td>
 						<td>{{$line['line_total']}}</td>
 					</tr>
@@ -133,6 +141,10 @@
 					<tr>
 						<td>Amount</td>
 						<td>{{ $receipt_details->total_paid }}</td>
+					</tr>
+					<tr>
+						<td>Total Items</td>
+						<td>{{  $qn  }}</td>
 					</tr>
 					{{-- <tr>
 						<td>Balance</td>
@@ -155,7 +167,7 @@
 				<h6>Delivery :: (+965) 66444477</h6>
 			</div>
 		</div>
-		<h5 style="text-align: center"><strong>{{ $receipt_details->invoice_no }}</strong></h5>
+		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
 		<div class="row">
 			<div class="col-xs-6">
 				<table class="full-table">
@@ -175,9 +187,8 @@
 					<tr>
 						<td>Delivery</td>
 						<td>
-
-							@if (isset($receipt_details->driver))
-								{{ $receipt_details->driver }}
+							@if ( isset($receipt_details->types_of_service_custom_fields ))
+								{{ $receipt_details->types_of_service_custom_fields[__("lang_v1.service_custom_field_2")] }}
 							@endif
 						</td>
 						
@@ -210,7 +221,7 @@
 						<td>Current Bal</td>
 						<td>
 							@if (isset($receipt_details->current_balance))
-								<span>{{ $receipt_details->current_balance }}</span>
+								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>
 					</tr>
@@ -222,6 +233,7 @@
 			<thead>
 				<tr>
 					<th>{{$receipt_details->table_product_label}}</th>
+					<th>Service Type</th>
 					<th>{{$receipt_details->table_qty_label}}</th>
 					<th>{{$receipt_details->table_unit_price_label}}</th>
 					<th>{{$receipt_details->table_subtotal_label}}</th>
@@ -231,20 +243,24 @@
 				@forelse($receipt_details->lines as $line)
 					<tr>
 						<td style="word-break: break-all;">
-							@if(!empty($line['image']))
+							{{-- @if(!empty($line['image']))
 								<img src="{{$line['image']}}" alt="Image" width="50" style="float: left; margin-right: 8px;">
-							@endif
-                            {{$line['name']}} {{$line['product_variation']}} {{$line['variation']}} 
-                            @if(!empty($line['sub_sku'])), {{$line['sub_sku']}} @endif @if(!empty($line['brand'])), {{$line['brand']}} @endif @if(!empty($line['cat_code'])), {{$line['cat_code']}}@endif
-                            @if(!empty($line['product_custom_fields'])), {{$line['product_custom_fields']}} @endif
-                            @if(!empty($line['sell_line_note']))({{$line['sell_line_note']}}) @endif 
-                            @if(!empty($line['lot_number']))<br> {{$line['lot_number_label']}}:  {{$line['lot_number']}} @endif 
-                            @if(!empty($line['product_expiry'])), {{$line['product_expiry_label']}}:  {{$line['product_expiry']}} @endif
-
-                            @if(!empty($line['warranty_name'])) <br><small>{{$line['warranty_name']}} </small>@endif @if(!empty($line['warranty_exp_date'])) <small>- {{@format_date($line['warranty_exp_date'])}} </small>@endif
-                            @if(!empty($line['warranty_description'])) <small> {{$line['warranty_description'] ?? ''}}</small>@endif
+							@endif --}}
+                            {{$line['name']}}
+                            {{-- @if(!empty($line['sub_sku'])), {{$line['sub_sku']}} @endif  --}}
+							{{-- @if(!empty($line['brand'])), {{$line['brand']}} @endif --}}
+							{{$line['line_note']}}
+							{{-- @if(!empty($line['cat_code'])), {{$line['cat_code']}}@endif --}}
+							
+                            {{-- @if(!empty($line['product_custom_fields'])), {{$line['product_custom_fields']}} @endif --}}
+                            {{-- @if(!empty($line['sell_line_note']))({{$line['sell_line_note']}}) @endif  --}}
+                            {{-- @if(!empty($line['lot_number']))<br> {{$line['lot_number_label']}}:  {{$line['lot_number']}} @endif  --}}
+                            {{-- @if(!empty($line['product_expiry'])), {{$line['product_expiry_label']}}:  {{$line['product_expiry']}} @endif --}}
+                            {{-- @if(!empty($line['warranty_name'])) <br><small>{{$line['warranty_name']}} </small>@endif @if(!empty($line['warranty_exp_date'])) <small>- {{@format_date($line['warranty_exp_date'])}} </small>@endif --}}
+                            {{-- @if(!empty($line['warranty_description'])) <small> {{$line['warranty_description'] ?? ''}}</small>@endif --}}
                         </td>
-						<td>{{$line['quantity']}} {{$line['units']}} </td>
+						<td>{{ $line['variation'] }}</td>
+						<td>{{$line['quantity']}} </td>
 						<td>{{$line['unit_price_inc_tax']}}</td>
 						<td>{{$line['line_total']}}</td>
 					</tr>
@@ -276,6 +292,10 @@
 					<tr>
 						<td>Amount</td>
 						<td>{{ $receipt_details->total_paid }}</td>
+					</tr>
+					<tr>
+						<td>Total Items</td>
+						<td>{{  $qn }}</td>
 					</tr>
 					{{-- <tr>
 						<td>Balance</td>

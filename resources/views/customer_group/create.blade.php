@@ -15,6 +15,10 @@
       </div>  
 
       <div class="form-group">
+        {!! Form::label('amount', __( 'lang_v1.amount' ) . ':*') !!}
+          {!! Form::text('amount', null, ['class' => 'form-control input_number', 'required', 'placeholder' => __( 'lang_v1.amount' ) ]); !!}
+      </div>   
+      <div class="form-group">
         {!! Form::label('subscription_amout', __( 'lang_v1.subscription_cost' ) . ':*') !!}
           {!! Form::text('subscription_amout', null, ['class' => 'form-control input_number', 'required', 'placeholder' => __( 'lang_v1.subscription_cost' ) ]); !!}
       </div>    

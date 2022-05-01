@@ -21,8 +21,9 @@
             </div>
             <div class="modal-body">
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="paid_for_renewal" id="paid_for_renewal">
-                <label class="form-check-label" for="paid_for_renewal">@lang('lang_v1.paid_for_renewal')</label>
+
+                <label class="form-check-label" for="Group">Group</label>
+                {!! Form::select('c_group', $customer_groups, null, ['class'=>"form-control c_group"]) !!}
               </div>
             </div>
             <div class="modal-footer">
@@ -43,7 +44,7 @@
         <div class="update_subscription">
             <div class="form-group">
                 <label for="">@lang('lang_v1.brought_today')</label>
-                <input class="form-control brought_today_count" type="text">
+                <input id="final_total_input" class="form-control brought_today_count" type="text">
             </div>
             <div class="form-group">
                 <input class="form-control btn btn-primary save_tranasaction" data-toggle="modal" data-target="#ajaxModal" type="submit" name="" id="" value="@lang('lang_v1.save')">  
