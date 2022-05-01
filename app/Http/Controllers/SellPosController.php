@@ -2353,9 +2353,9 @@ return json_encode($named_array);*/
             $price_group = SellingPriceGroup::find($price_group_id);
             $price_group_name = $price_group->name;
         }
-        $drivers = DB::table('tbl_drivers')->get()->pluck('driver_name','id');
+
         $modal_html = view('types_of_service.pos_form_modal')
-                    ->with(compact('types_of_service','drivers'))->render();
+                    ->with(compact('types_of_service'))->render();
 
         return $this->respond([
                 'price_group_id' => $price_group_id,

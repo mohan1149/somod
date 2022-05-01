@@ -35,7 +35,7 @@ class CustomerGroupController extends Controller
             $business_id = request()->session()->get('user.business_id');
 
             $customer_group = CustomerGroup::where('business_id', $business_id)
-                                ->select(['name','subscription_cost','subscription_pieces','id']);
+                                ->select(['name','subscription_cost','id']);
 
             return Datatables::of($customer_group)
                     ->addColumn(
@@ -50,7 +50,7 @@ class CustomerGroupController extends Controller
                         @endcan'
                     )
                     ->removeColumn('id')
-                    ->rawColumns([3])
+                    ->rawColumns([2])
                     ->make(false);
         }
 
@@ -87,17 +87,9 @@ class CustomerGroupController extends Controller
             $input = $request->only(['name', 'amount']);
             $input['business_id'] = $request->session()->get('user.business_id');
             $input['created_by'] = $request->session()->get('user.id');
-            $subscription_cost = !empty($request['subscription_amout']) ? $this->commonUtil->num_uf($request['subscription_amout']) : 0;
-            $subscription_pieces = $subscription_cost + $subscription_cost * (25/100);
             $input['amount'] = !empty($input['amount']) ? $this->commonUtil->num_uf($input['amount']) : 0;
+            $input['subscription_cost'] = !empty($request['subscription_amout']) ? $this->commonUtil->num_uf($request['subscription_amout']) : 0;
             $customer_group = CustomerGroup::create($input);
-            $upCusGrp = CustomerGroup::where('id', $customer_group->id)
-                ->update(
-                    [
-                        'subscription_cost' => $subscription_cost,
-                        'subscription_pieces' => $subscription_pieces,
-                    ]
-                );
             $output = ['success' => true,
                             'data' => $customer_group,
                             'msg' => __("lang_v1.success")

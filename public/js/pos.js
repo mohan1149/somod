@@ -13,78 +13,51 @@ $(document).ready(function () {
     //         $('.brought_today_count').focus();
     //     }
     // });
+
+    // const total_event = document.getElementById('final_total_input');
+    // total_event.addEventListener('change',()=>{
+    //     alert($("#final_total_input").val());
+    // })
     $('.save_tranasaction').on('click', () => {
-        let lang = document.documentElement.lang;
-        let dir = lang === "ar" ? "rtl" : "ltr";
-        let today_brought = $('.brought_today_count').val();
-        let net_total_avail = quota_left - today_brought;
-        let total_used = subscription_pieces - net_total_avail;
-        $('.brought_today').text(today_brought);
-        $('.net_available').text(net_total_avail);
-        let cid = $('#customer_id').val();
-        let data = {
-            cid: cid,
-            net_total_avail: net_total_avail,
-            total_used: total_used,
+        if (!$('table#pos_table tbody').find('.product_row').length <= 0) {
+            updatMembership();
         }
-        $.ajax({
-            type: "POST",
-            url: '/api/updateCustomerSubscriptionInfo',
-            data: data,
-            success: (response) => {
-                $("#ajaxModal").modal("hide");
-                if (!$('table#pos_table tbody').find('.product_row').length <= 0) {
-                    pos_form_obj.submit();
-                } else {
-                    pos_print(print_content);
-                }
-            },
-            error: (error) => {
-                console.log(error);
-                $("#ajaxModal").modal("hide");
-                alert('Something went wrong');
-            }
-        });
     });
     $('#customer_id').on('change', () => {
         let cid = $('#customer_id').val();
         if (cid !== '1') {
             $.getJSON("/api/get/customer-subscription-details/" + cid, (response) => {
-                if (response === 0) {
-                    alert('Data Not available');
+                if (response.customer_group_id === null) {
+                    $("#payment_status").val('due');
+                    $('.pos_customer_subscripion_info').hide();
+                    $('.customer-type').removeClass('show');
+                    $('.customer-type').addClass('hidden');
                 } else {
-                    if (response.group_id === 1) {
-                        $('.pos_pod_list').show();
-                        //$('.pos_customer_subscripion_info').hide();
-                        $('.payment_panel').show();
+                    $('.pos_customer_subscripion_info').show();
+                    $('.customer-type').removeClass('hidden');
+                    $('.customer-type').addClass('show');
+                    $('.customer-type').text('Member');
+                    
+                    if (response.custom_field1 !== "0") {
+                        $('.subs_paid_badge').show();
+                        $('.subs_unpaid_badge').hide();
                     } else {
-                        // $('.pos_pod_list').hide();
-                        $('.pos_customer_subscripion_info').show();
-                        //$('.payment_panel').hide();
-                        if (response.custom_field1 === "on") {
-                            $('.subs_paid_badge').show();
-                            $('.subs_unpaid_badge').hide();
-                        } else {
-                            $('.subs_paid_badge').hide();
-                            $('.subs_unpaid_badge').show();
-                        }
-                        subscription_name = response.name;
-                        quota_used = response.custom_field2;
-                        quota_left = response.custom_field3;
-                        subscription_cost = response.subscription_cost;
-                        subscription_pieces = response.subscription_pieces;
-
-                        $('.subscription_name').text(subscription_name);
-                        $('.quota_used').text(quota_used);
-                        $('.quota_left').text(quota_left);
-                        $('.subscription_cost').text(subscription_cost);
-                        $('.subscription_pieces').text(subscription_pieces);
-
-                        $('.p_subscription_name').text(subscription_name);
-                        $('.p_subscription_cost').text(subscription_cost);
-                        $('.p_subscription_pieces').text(subscription_pieces);
+                        $('.subs_paid_badge').hide();
+                        $('.subs_unpaid_badge').show();
                     }
+                    $("#payment_status").val('paid');
+                    quota_used = parseFloat(response.custom_field2).toFixed(3);
+                    quota_left = parseFloat(response.custom_field3).toFixed(3);
+                    subscription_cost = parseFloat(response.amount).toFixed(3);
+                    subscription_pieces = parseFloat(response.subscription_cost).toFixed(3);
+
+                    $('.subscription_name').text(response.name);
+                    $('.quota_used').text(quota_used);
+                    $('.quota_left').text(quota_left);
+                    $('.subscription_cost').text(parseFloat(subscription_cost).toFixed(3));
+                    $('.subscription_pieces').text(parseFloat(subscription_pieces).toFixed(3));
                 }
+
             })
 
         }
@@ -96,11 +69,14 @@ $(document).ready(function () {
     });
     $('.renewCustomerSubscriptionPlan').on('click', () => {
         $("#ajaxModal").modal("show");
-        let paid_for_renewal = $('#paid_for_renewal')[0].checked;
+        let group = $('.c_group').val();
         let cid = $('#customer_id').val();
+        let date = new Date();
+        let renewed = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
         let data = {
             cid: cid,
-            paid_for_renewal: paid_for_renewal ? "on" : "off",
+            group: group,
+            renewed: renewed,
         }
         $.ajax({
             type: "POST",
@@ -108,6 +84,7 @@ $(document).ready(function () {
             data: data,
             success: (response) => {
                 $("#ajaxModal").modal("hide");
+                alert('Membership Updated');
                 window.location.reload();
             },
             error: (error) => {
@@ -833,6 +810,33 @@ $(document).ready(function () {
             pos_form_obj.submit();
         });
     });
+    function updatMembership() {
+        localStorage.setItem('trans_type', 'mem');
+        let today_brought = $('.brought_today_count').val();
+        let net_total_avail = quota_left - today_brought;
+        let total_used = subscription_pieces - net_total_avail;
+        $('.brought_today').text(today_brought);
+        $('.net_available').text(net_total_avail);
+        let cid = $('#customer_id').val();
+        let data = {
+            cid: cid,
+            net_total_avail: net_total_avail,
+            total_used: total_used,
+        }
+        $.ajax({
+            type: "POST",
+            url: '/api/updateCustomerSubscriptionInfo',
+            data: data,
+            success: (response) => {
+                $("#ajaxModal").modal("hide");
+                pos_form_obj.submit();
+            },
+            error: (error) => {
+                $("#ajaxModal").modal("hide");
+                alert('Something went wrong');
+            }
+        });
+    }
     function performOutsideOrder(tid) {
         $('#outside_order_trans_id').val(tid);
         let data = $('form#add_outside_order_form').serialize();
@@ -1218,6 +1222,7 @@ $(document).ready(function () {
 
     pos_form_validator = pos_form_obj.validate({
         submitHandler: function (form) {
+            console.log(form);
             // var total_payble = __read_number($('input#final_total_input'));
             // var total_paying = __read_number($('input#total_paying_input'));
             var cnf = true;
@@ -1232,12 +1237,14 @@ $(document).ready(function () {
                 // 	cnf = false;
                 // }
             }
-
             if (cnf) {
                 $('div.pos-processing').show();
                 $('#pos-save').attr('disabled', 'true');
                 var data = $(form).serialize();
                 data = data + '&status=final';
+                if (localStorage.getItem('trans_type') === 'mem') {
+                    data = data.replace('cash', 'card');
+                }
                 var url = $(form).attr('action');
                 $.ajax({
                     method: 'POST',
@@ -1247,18 +1254,9 @@ $(document).ready(function () {
                     success: function (result) {
                         if (result.success == 1) {
                             $('#modal_payment').modal('hide');
-                            if (localStorage.getItem('trans_type') === 'OUTSIDE') {
-                                performOutsideOrder(result.transaction);
-                                get_recent_transactions('final', $('div#tab_final'));
-                            } else {
-                                toastr.success(result.msg);
-                                reset_pos_form();
-                                if (result.receipt.is_enabled) {
-                                    pos_print(result.receipt);
-                                }
-                                get_recent_transactions('final', $('div#tab_final'));
-                            }
-
+                            reset_pos_form();
+                            pos_print(result.receipt);
+                            get_recent_transactions('final', $('div#tab_final'));
                         } else {
                             toastr.error(result.msg);
                         }
