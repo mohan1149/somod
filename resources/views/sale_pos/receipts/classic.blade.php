@@ -64,7 +64,8 @@
 					<tr>
 						<td>Current Bal</td>
 						<td>
-							@if (isset($receipt_details->current_balance))
+							@if (isset($receipt_details->current_balance) && $receipt_details->current_balance !=="Full")
+
 								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>
@@ -220,7 +221,7 @@
 					<tr>
 						<td>Current Bal</td>
 						<td>
-							@if (isset($receipt_details->current_balance))
+							@if (isset($receipt_details->current_balance) && $receipt_details->current_balance !=="Full")
 								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>
