@@ -87,8 +87,9 @@ class CustomerGroupController extends Controller
             $input = $request->only(['name', 'amount']);
             $input['business_id'] = $request->session()->get('user.business_id');
             $input['created_by'] = $request->session()->get('user.id');
-            $input['amount'] = !empty($input['amount']) ? $this->commonUtil->num_uf($input['amount']) : 0;
+            $input['subscription_pieces'] = !empty($input['amount']) ? $this->commonUtil->num_uf($input['amount']) : 0;
             $input['subscription_cost'] = !empty($request['subscription_amout']) ? $this->commonUtil->num_uf($request['subscription_amout']) : 0;
+            $input['amount'] = 0;
             $customer_group = CustomerGroup::create($input);
             $output = ['success' => true,
                             'data' => $customer_group,
