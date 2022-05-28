@@ -211,7 +211,7 @@ class ContactController extends Controller
             $query = Contact::leftjoin('transactions AS t', 'contacts.id', '=', 't.contact_id')
                         ->leftjoin('customer_groups AS cg', 'contacts.customer_group_id', '=', 'cg.id')
                         ->where('contacts.business_id', $business_id)
-                        // ->where('contacts.customer_group_id','!=',1)
+
                         ->whereDate('contacts.created_at', '>=', $request['start_date'])
                         ->whereDate('contacts.created_at', '<=', $request['end_date'])
                         ->onlyCustomers()

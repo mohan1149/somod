@@ -988,7 +988,7 @@ $(document).ready(function () {
             { data: 'customer_group', name: 'cg.name' },
             { data: 'address', name: 'address', orderable: false },
             { data: 'mobile', name: 'mobile' },
-            { data: 'amount', name: 'amount' },
+            { data: 'amount', name: 'cg.amount' },
             { data: 'custom_field1', name: 'custom_field1' },
             { data: 'custom_field2', name: 'custom_field2' },
             { data: 'custom_field3', name: 'custom_field3' },
