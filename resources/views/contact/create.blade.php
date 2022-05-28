@@ -69,7 +69,7 @@
                 <span class="input-group-addon">
                     <i class="fa fa-users"></i>
                 </span>
-                {!! Form::select('customer_group_id', $customer_groups, 1, ['class' => 'form-control']); !!}
+                {!! Form::select('customer_group_id', $customer_groups, 0, ['class' => 'form-control']); !!}
             </div>
         </div>
       </div>

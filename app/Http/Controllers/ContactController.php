@@ -1156,7 +1156,7 @@ class ContactController extends Controller
                 ->join('customer_groups as cg','cg.id','=','contacts.customer_group_id')
                 ->select([
                     'cg.name',
-                    'cg.amount',
+                    'cg.subscription_pieces as amount',
                     'cg.subscription_cost',
                     'contacts.contact_id',
                     'contacts.custom_field1',
