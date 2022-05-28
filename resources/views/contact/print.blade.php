@@ -52,7 +52,7 @@
             <table style="width: 100%">
                 <tr>
                     <td>{{ __("lang_v1.start_balance") }}</td>
-                    <td>{{ number_format($data->subscription_pieces,3) }}</td>
+                    <td>{{ number_format($data->custom_field1,3) }}</td>
                 </tr>
                 <tr>
                     <td>{{ __("lang_v1.used_balance") }}</td>
@@ -84,7 +84,7 @@
             <table style="width: 100%">
                 <tr>
                     <td>{{ __("lang_v1.start_balance") }}</td>
-                    <td>{{ number_format($data->subscription_pieces,3) }}</td>
+                    <td>{{ number_format($data->custom_field1,3) }}</td>
                 </tr>
                 <tr>
                     <td>{{ __("lang_v1.used_balance") }}</td>
