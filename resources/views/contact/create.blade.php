@@ -204,7 +204,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <div class="form-group">
+        {{-- <div class="form-group">
             {!! Form::label('landmark', __('business.landmark') . ':') !!}
             <div class="input-group">
                 <span class="input-group-addon">
@@ -213,7 +213,7 @@
                 {!! Form::text('landmark', null, ['class' => 'form-control', 
                 'placeholder' => __('business.landmark')]); !!}
             </div>
-        </div>
+        </div> --}}
       </div>
       <div class="col-md-3">
         <div class="form-group">
