@@ -224,6 +224,7 @@ class ContactController extends Controller
                                 'cg.name as customer_group', 
                                 'cg.subscription_cost',
                                 'cg.subscription_pieces',
+                                'cg.amount',
                                 'city', 
                                 'state', 
                                 'country', 
@@ -252,8 +253,8 @@ class ContactController extends Controller
                 //     '<span class="display_currency contact_due" data-orig-value="{{$total_invoice - $invoice_received}}" data-currency_symbol=true data-highlight=true>{{($total_invoice - $invoice_received)}}</span>'
                 // )
                 ->editColumn(
-                    'total_paid_value',
-                    '<span class="display_currency total_paid_value" data-orig-value="{{ $total_paid_value }}" data-currency_symbol=true data-highlight=false>{{ $total_paid_value }}</span>'
+                    'amount',
+                    '<span class="display_currency amount" data-orig-value="{{ $amount }}" data-currency_symbol=true data-highlight=false>{{ $amount }}</span>'
                 )
                 ->addColumn(
                     'status',
@@ -310,7 +311,7 @@ class ContactController extends Controller
             if (!$reward_enabled) {
                 $contacts->removeColumn('total_rp');
             }
-            return $contacts->rawColumns(['custom_field1','custom_field3','action','total_paid_value','status'])
+            return $contacts->rawColumns(['custom_field1','custom_field3','action','amount','status'])
                             ->make(true);
             
         }catch(\Exception $e){

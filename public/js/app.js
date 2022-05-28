@@ -988,7 +988,7 @@ $(document).ready(function () {
             { data: 'customer_group', name: 'cg.name' },
             { data: 'address', name: 'address', orderable: false },
             { data: 'mobile', name: 'mobile' },
-            { data: 'total_paid_value', name: 'total_paid_value' },
+            { data: 'amount', name: 'amount' },
             { data: 'custom_field1', name: 'custom_field1' },
             { data: 'custom_field2', name: 'custom_field2' },
             { data: 'custom_field3', name: 'custom_field3' },
@@ -1016,7 +1016,7 @@ $(document).ready(function () {
 
             var total_return_due = sum_table_col($('#contact_table'), 'return_due');
             $('#footer_contact_return_due').text(total_return_due);
-            var total_subscription = sum_table_col($('#contact_table'), 'total_paid_value');
+            var total_subscription = sum_table_col($('#contact_table'), 'amount');
             $('#footer_subscription_total').text(total_subscription);
             __currency_convert_recursively($('#contact_table'));
 
