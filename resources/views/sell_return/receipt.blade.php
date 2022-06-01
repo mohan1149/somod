@@ -102,59 +102,59 @@
 	                        </td>
 	                    @endif
 
-						<td class="text-right">
-							{{$line['quantity']}} {{$line['units']}}
-						</td>
-						<td class="text-right">
-							{{$line['unit_price_exc_tax']}}
-						</td>
-						<td class="text-right">
-							{{$line['line_total']}}
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
-		<div class="row">
-			<div class="col-xs-6"></div>
-			<div class="col-xs-6" class="pull-right">
-				<table class="full-right">
-					<tr>
-						<td>Amount</td>
-						<td>{{ $receipt_details->total }}</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-	{{-- shop receipt --}}
-	<div class="col-xs-6">
-		<div class="row">
-			<div class="col-xs-6">
-				<img src="/img/default.png" style="width: 75%">
-			</div>
-			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
-				<h6>Tel :: (+965) 29415416</h6>
-				<h6>Delivery :: (+965) 66444477</h6>
-			</div>
-		</div>
-		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
-		<div class="row">
-			<div class="col-xs-6">
-				<table class="full-table">
-					<tr>
-						<td>Received Date</td>
-						<td>{{ $receipt_details->invoice_date }}</td>
-					</tr>
-					<tr>
-						<td>Delivery Date</td>
-						<td>
-							@if ( isset($receipt_details->types_of_service_custom_fields))
-								{{ $receipt_details->types_of_service_custom_fields['Delivery Date'] }}
-							@endif
-						</td>
-						
+			    						<td class="text-right">
+																{{$line['quantity']}} {{$line['units']}}
+																						</td>
+																												<td class="text-right">
+																																			{{$line['unit_price_exc_tax']}}
+																																									</td>
+																																															<td class="text-right">
+																																																						{{$line['line_total']}}
+																																																												</td>
+																																																																	</tr>
+																																																																					@endforeach
+																																																																								</tbody>
+																																																																										</table>
+																																																																												<div class="row">
+																																																																															<div class="col-xs-6"></div>
+																																																																																		<div class="col-xs-6" class="pull-right">
+																																																																																						<table class="full-right">
+																																																																																											<tr>
+																																																																																																	<td>Amount</td>
+																																																																																																							<td>{{ $receipt_details->total }}</td>
+																																																																																																												</tr>
+																																																																																																																</table>
+																																																																																																																			</div>
+																																																																																																																					</div>
+																																																																																																																						</div>
+																																																																																																																							{{-- shop receipt --}}
+																																																																																																																								<div class="col-xs-6">
+																																																																																																																										<div class="row">
+																																																																																																																													<div class="col-xs-6">
+																																																																																																																																	<img src="/img/default.png" style="width: 75%">
+																																																																																																																																				</div>
+																																																																																																																																							<div class="col-xs-6">
+																																																																																																																																											<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
+																																																																																																																																															<h6>Tel :: (+965) 29415416</h6>
+																																																																																																																																																			<h6>Delivery :: (+965) 66444477</h6>
+																																																																																																																																																						</div>
+																																																																																																																																																								</div>
+																																																																																																																																																										<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
+																																																																																																																																																												<div class="row">
+																																																																																																																																																															<div class="col-xs-6">
+																																																																																																																																																																			<table class="full-table">
+																																																																																																																																																																								<tr>
+																																																																																																																																																																														<td>Received Date</td>
+																																																																																																																																																																																				<td>{{ $receipt_details->invoice_date }}</td>
+																																																																																																																																																																																									</tr>
+																																																																																																																																																																																														<tr>
+																																																																																																																																																																																																				<td>Delivery Date</td>
+																																																																																																																																																																																																										<td>
+																																																																																																																																																																																																																	@if ( isset($receipt_details->types_of_service_custom_fields))
+																																																																																																																																																																																																																									{{ $receipt_details->types_of_service_custom_fields['Delivery Date'] }}
+																																																																																																																																																																																																																																@endif
+																																																																																																																																																																																																																																						</td>
+																																																																																																																																																																																																																																												
 					</tr>
 					<tr>
 						<td>Delivery</td>
@@ -192,7 +192,7 @@
 					<tr>
 						<td>Current Bal</td>
 						<td>
-							@if (isset($receipt_details->current_balance))
+							@if (isset($receipt_details->current_balance) && $receipt_details->current_balance !=="Full")
 								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>
@@ -230,32 +230,32 @@
 	                        </td>
 	                    @endif
 
-						<td class="text-right">
-							{{$line['quantity']}} {{$line['units']}}
-						</td>
-						<td class="text-right">
-							{{$line['unit_price_exc_tax']}}
-						</td>
-						<td class="text-right">
-							{{$line['line_total']}}
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
-		<div class="row">
-			<div class="col-xs-6"></div>
-			<div class="col-xs-6" class="pull-right">
-				<table class="full-right">
-					<tr>
-						<td>Amount</td>
-						<td>{{ $receipt_details->total }}</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</div>
+			    						<td class="text-right">
+																{{$line['quantity']}} {{$line['units']}}
+																						</td>
+																												<td class="text-right">
+																																			{{$line['unit_price_exc_tax']}}
+																																									</td>
+																																															<td class="text-right">
+																																																						{{$line['line_total']}}
+																																																												</td>
+																																																																	</tr>
+																																																																					@endforeach
+																																																																								</tbody>
+																																																																										</table>
+																																																																												<div class="row">
+																																																																															<div class="col-xs-6"></div>
+																																																																																		<div class="col-xs-6" class="pull-right">
+																																																																																						<table class="full-right">
+																																																																																											<tr>
+																																																																																																	<td>Amount</td>
+																																																																																																							<td>{{ $receipt_details->total }}</td>
+																																																																																																												</tr>
+																																																																																																																</table>
+																																																																																																																			</div>
+																																																																																																																					</div>
+																																																																																																																						</div>
+																																																																																																																						</div>
 
 
 <style>
@@ -281,3 +281,4 @@
 		}
 	}
 </style>
+
