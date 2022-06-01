@@ -11,23 +11,32 @@
 				<h6>Insta - kaifan_alsmood</h6>
 			</div>
 		</div>
-		<div style="border: 2px solid black;width:25%">
+		<div style="border: 2px solid black;width:50%">
 			<table>
 				<tr>
-					<td><span style='font-size:25px;margin-right:15px'>&#9633;</span></td>
-					<td><span style='font-size:15px;'>&#9634;</span></td>
-				</tr>
-				<tr>
-					<td><span style='font-size:25px;margin-right:15px'>&#9653;</span></td>
-					<td><span style='font-size:15px;'>&#9634;</span></td>
-				</tr>
-				<tr>
-					<td>عطر</td>
-					<td>
-						نعم<span style='font-size:15px;margin:5px'>&#9634;</span>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style='font-size:35px;display: block'>&#9633;</span>
+						<span style='font-size:15px;display: block'>&#9634;</span>
 					</td>
-					<td>
-						رقم<span style='font-size:15px;margin:5px;'>&#9634;</span>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style='font-size:35px;display: block'>&#9653;</span>
+						<span style='font-size:15px;display: block'>&#9634;</span>
+					</td>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style="display: block;font-size:16px">عطر</span>
+						نعم<span style='font-size:15px;margin-right:5px'>&#9634;</span>
+						لا<span style='font-size:15px;margin-right:5px;'>&#9634;</span>
+					</td>
+					<td> 
+						<span
+							style="font-size: 16px"
+						>- | +</span>	
 					</td>
 				</tr>
 			</table>
