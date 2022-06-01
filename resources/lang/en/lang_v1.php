@@ -134,7 +134,7 @@ return [
     'total_items' => 'Total Items',
     'total_paying' => 'Total Paying',
     'balance' => 'Balance',
-    'payment_method' => 'Payment Method',
+    'payment_method' => 'Customer Type',
     'card_no' => 'Card Number',
     'card_holder_name' => 'Card Holder Name',
     'card_transaction_no' => 'Card Transaction Number',

@@ -332,7 +332,7 @@ return [
    'cheque_no' => 'رقم الشيك.',
    'card_transaction_no' => 'رقم معاملة البطاقة',
    'bank_account_no' => 'رقم الحساب البنكي.',
-   'sell_payment_report' => 'تقرير مدفوعات المبيعات',
+   'sell_payment_report' => 'تقرير الفواتير اليومية ',
    'restaurant' => 'مطعم',
    'user_type' => 'نوع المستخدم',
    'product_custom_field1' => 'حقل مخصص 1',
