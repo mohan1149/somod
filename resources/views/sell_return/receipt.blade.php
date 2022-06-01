@@ -6,7 +6,7 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
 				<h6>Tel :: (+965) 29415416</h6>
 				<h6>Delivery :: (+965) 66444477</h6>
 			</div>
@@ -134,7 +134,7 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
 				<h6>Tel :: (+965) 29415416</h6>
 				<h6>Delivery :: (+965) 66444477</h6>
 			</div>
@@ -192,7 +192,7 @@
 					<tr>
 						<td>Current Bal</td>
 						<td>
-							@if (isset($receipt_details->current_balance))
+							@if (isset($receipt_details->current_balance) && $receipt_details->current_balance !=="Full")
 								<span>{{ number_format($receipt_details->current_balance,3) }}</span>
 							@endif
 						</td>

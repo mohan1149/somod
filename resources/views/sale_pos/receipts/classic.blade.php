@@ -6,10 +6,31 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
-				<h6>Tel :: (+965) 29415416</h6>
-				<h6>Delivery :: (+965) 66444477</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
+				<h6>Tel - (+965) 99175252</h6>
+				<h6>Insta - kaifan_alsmood</h6>
 			</div>
+		</div>
+		<div style="border: 2px solid black;width:25%">
+			<table>
+				<tr>
+					<td><span style='font-size:25px;margin-right:15px'>&#9633;</span></td>
+					<td><span style='font-size:15px;'>&#9634;</span></td>
+				</tr>
+				<tr>
+					<td><span style='font-size:25px;margin-right:15px'>&#9653;</span></td>
+					<td><span style='font-size:15px;'>&#9634;</span></td>
+				</tr>
+				<tr>
+					<td>عطر</td>
+					<td>
+						نعم<span style='font-size:15px;margin:5px'>&#9634;</span>
+					</td>
+					<td>
+						رقم<span style='font-size:15px;margin:5px;'>&#9634;</span>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
 		<div class="row">
@@ -163,9 +184,9 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
-				<h6>Tel :: (+965) 29415416</h6>
-				<h6>Delivery :: (+965) 66444477</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
+				<h6>Tel - (+965) 99175252</h6>
+				<h6>Insta - kaifan_alsmood</h6>
 			</div>
 		</div>
 		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
