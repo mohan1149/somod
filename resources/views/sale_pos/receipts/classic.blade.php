@@ -6,10 +6,40 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
-				<h6>Tel :: (+965) 29415416</h6>
-				<h6>Delivery :: (+965) 66444477</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
+				<h6>Tel - (+965) 99175252</h6>
+				<h6>Insta - kaifan_alsmood</h6>
 			</div>
+		</div>
+		<div style="border: 2px solid black;width:50%">
+			<table>
+				<tr>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style='font-size:35px;display: block'>&#9633;</span>
+						<span style='font-size:15px;display: block'>&#9634;</span>
+					</td>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style='font-size:35px;display: block'>&#9653;</span>
+						<span style='font-size:15px;display: block'>&#9634;</span>
+					</td>
+					<td
+						style="padding-right: 15px"
+					>
+						<span style="display: block;font-size:16px">عطر</span>
+						نعم<span style='font-size:15px;margin-right:5px'>&#9634;</span>
+						لا<span style='font-size:15px;margin-right:5px;'>&#9634;</span>
+					</td>
+					<td> 
+						<span
+							style="font-size: 16px"
+						>- | +</span>	
+					</td>
+				</tr>
+			</table>
 		</div>
 		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>
 		<div class="row">
@@ -163,9 +193,9 @@
 				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
-				<h6>Kaifan, Block -2, Kifan Commercial Complex</h6>
-				<h6>Tel :: (+965) 29415416</h6>
-				<h6>Delivery :: (+965) 66444477</h6>
+				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
+				<h6>Tel - (+965) 99175252</h6>
+				<h6>Insta - kaifan_alsmood</h6>
 			</div>
 		</div>
 		<h3 style="text-align: right"><strong>{{ $receipt_details->invoice_no }}</strong></h3>

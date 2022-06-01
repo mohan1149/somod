@@ -81,7 +81,7 @@ class ContactController extends Controller
             }
             $business_id = request()->session()->get('user.business_id');
             $query = Contact::where('contacts.business_id', $business_id)
-                        ->where('customer_group_id',1)
+                        ->whereNull('customer_group_id')
                         ->where('type','customer')
                         ->select(
                             [
@@ -211,7 +211,7 @@ class ContactController extends Controller
             $query = Contact::leftjoin('transactions AS t', 'contacts.id', '=', 't.contact_id')
                         ->leftjoin('customer_groups AS cg', 'contacts.customer_group_id', '=', 'cg.id')
                         ->where('contacts.business_id', $business_id)
-
+                        ->whereNotNull('contacts.customer_group_id')
                         ->whereDate('contacts.created_at', '>=', $request['start_date'])
                         ->whereDate('contacts.created_at', '<=', $request['end_date'])
                         ->onlyCustomers()
