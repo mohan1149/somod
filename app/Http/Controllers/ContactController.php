@@ -1166,7 +1166,11 @@ class ContactController extends Controller
                     'total_paid_value'
                 ])
                 ->first();
-            return $response;
+            if($response){
+                return $response;
+            }else{
+                return  response()->json(['status'=>false], 200);
+            }
         }catch(\Exception $e){
             return response()->json($e->getMessage(), 200);
         }

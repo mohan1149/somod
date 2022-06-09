@@ -126,7 +126,7 @@ return [
     'select_location' => 'Select location',
     'add_description' => 'Add Description',
     'cash' => 'Not Membership',
-    'card' => 'Memnership',
+    'card' => 'Subscription',
     'cheque' => '0000',
     'bank_transfer' => '0000',
     'other' => '0000',

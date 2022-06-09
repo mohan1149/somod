@@ -24,3 +24,11 @@ Route::post('/renewCustomerSubscriptionPlan', 'ContactController@renewCustomerSu
 Route::get('/get/customers','OutsideCustomerController@getCustomers');
 Route::get('/get/drivers','DriverController@getDrivers');
 Route::get('/get/areas/{pid}','OutsideCustomerController@getAreas');
+
+// APIs
+Route::post('/signin','API\APIController@signin');
+Route::get('/subscriptions','API\APIController@subscriptions');
+Route::post('/signup','API\APIController@signup');
+Route::get('/categories','API\APIController@categories');
+Route::get('/products','API\APIController@products');
+
