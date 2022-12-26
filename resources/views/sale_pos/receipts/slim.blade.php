@@ -11,7 +11,7 @@
     <body>
         <div class="ticket">
         	<!-- Logo -->
-			<img src="/smd/public/img/default.png" style="width: 100%">
+			<img src="/img/default.png" style="width: 100%">
 
 			<table style="width: 50% !important; float: left">
 				<tr>
@@ -41,7 +41,7 @@
 		        	</td>
 		        </tr>
 			</table>
-			{{-- <table style="width: 49% !important; float: right;">
+			<table style="width: 49% !important; float: right;">
 		        <tr>
 		        	<th>
 						Address
@@ -52,7 +52,7 @@
 						@endif
 		        	</td>
 		        </tr>
-			</table> --}}
+			</table>
 			
 			<table>
 				<tr>
@@ -120,11 +120,11 @@
 			<table>
 				<tr>
 					<td>
-						<img src="/smd/public/img/1.png" style="width: 100%">
+						<img src="/img/1.png" style="width: 100%">
 					
 					</td>
 					<td>
-						<img src="/smd/public/img/2.png" style="width: 100%">
+						<img src="/img/2.png" style="width: 100%">
 					</td>
 				</tr>
 			</table>

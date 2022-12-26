@@ -246,7 +246,7 @@ class ContactController extends Controller
                             ])
                         ->groupBy('contacts.id');
             $contacts = Datatables::of($query)
-                ->addColumn('address', '{{implode(array_filter([$custom_field4,$city,$state,$country,$landmark]), ", ")}}')
+                ->addColumn('address', '{{implode(",",array_filter([$custom_field4,$city,$state,$country,$landmark]))}}')
                 // ->addColumn(
                 //     'due',
                 //     '<span class="display_currency contact_due" data-orig-value="{{$total_invoice - $invoice_received}}" data-currency_symbol=true data-highlight=true>{{($total_invoice - $invoice_received)}}</span>'

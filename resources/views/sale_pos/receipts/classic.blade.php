@@ -3,7 +3,7 @@
 	<div class="col-xs-6 customer-receipt">
 		<div class="row">
 			<div class="col-xs-6">
-				<img src="/smd/public/img/default.png" style="width: 75%">
+				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
 				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
@@ -190,7 +190,7 @@
 	<div class="col-xs-6">
 		<div class="row">
 			<div class="col-xs-6">
-				<img src="/smd/public/img/default.png" style="width: 75%">
+				<img src="/img/default.png" style="width: 75%">
 			</div>
 			<div class="col-xs-6">
 				<h6>كيفان - نادي الكويت الرياضي - شارخ خليل بن احمد - مقابل صاله بودي</h6>
