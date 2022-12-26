@@ -5,19 +5,6 @@ $(document).ready(function () {
     let quota_left = 0;
     let subscription_cost = 0;
     let subscription_pieces = 0;
-
-    // $('.brought_today_count').on('keyup', () => {
-    //     if (parseInt($('.brought_today_count').val()) > quota_left) {
-    //         alert("Customer don't have enough subscription plan");
-    //         $('.brought_today_count').val(0);
-    //         $('.brought_today_count').focus();
-    //     }
-    // });
-
-    // const total_event = document.getElementById('final_total_input');
-    // total_event.addEventListener('change',()=>{
-    //     alert($("#final_total_input").val());
-    // })
     $('.save_tranasaction').on('click', () => {
         if (!$('table#pos_table tbody').find('.product_row').length <= 0) {
             updatMembership();
@@ -26,9 +13,7 @@ $(document).ready(function () {
     $('#customer_id').on('change', () => {
         let cid = $('#customer_id').val();
         if (cid !== '1') {  
-            
             $.getJSON("/api/get/customer-subscription-details/" + cid, (response) => {
-
                 if (response.status === false) {
                     $("#payment_status").val('due');
                     $('.pos_customer_subscripion_info').hide();

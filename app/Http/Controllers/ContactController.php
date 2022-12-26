@@ -560,11 +560,12 @@ class ContactController extends Controller
                     }
                     $contact->custom_field4 = $request['customer_area'];
                     $gid = $request['customer_group_id'];
-                if($request['type'] == 'customer' && $gid !="" ){
+                    $custmer = Contact::find($id);
+                if($request['type'] == 'customer' && $gid !="" && $gid != $custmer->customer_group_id){
                     $cg = CustomerGroup::find($gid);
                     $contact->custom_field1 = $cg->subscription_cost;
-                    $contact->custom_field2 =  0;
-                    $contact->custom_field3 = $cg->subscription_cost;
+                    $contact->custom_field2 =  0;//used balance
+                    $contact->custom_field3 = $cg->subscription_cost+$contact->custom_field3;//available 
                     $contact->total_paid_value = $request['custom_field1'];
 
                 }

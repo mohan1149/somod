@@ -1,5 +1,5 @@
 <?php
-header("refresh: 1; https://www.ritualssalonkuw.com/pos/public");
+header("refresh: 1; http://localhost/smd/public");
 
 	echo '<title>Laravel Installed</title><div style="background: #e9ffed; border: 1px solid #b0dab7; padding: 15px;" align="center" >
 	<font size="5" color="#182e7a">Laravel is installed successfully.</font><br /><br />
